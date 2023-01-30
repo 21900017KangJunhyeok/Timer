@@ -6,12 +6,21 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct TimerApp: App {
+    @StateObject var pomodoroModel: PomodoroModel = .init()
+    
+    init() {
+        FirebaseApp.configure()
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(pomodoroModel)
+            
         }
     }
 }
