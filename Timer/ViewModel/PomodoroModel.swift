@@ -25,12 +25,12 @@ class PomodoroModel: NSObject,ObservableObject {
     
     //데이터 베이스에 저장할 변수들
     @Published var storeTime : TimeModel = TimeModel(id: "", totalSec: 0, staticTotalSec: 0)
-    @ObservedObject var model = TimeViewModel()
+    //@ObservedObject var model = TimeViewModel()
     @Published var uid : String = ""
     @Published var totalSec: Int = 0
     @Published var staticTotalSec: Int = 0
     
-    
+    //집에 가고 싶다
     
     //MARK: 타이머 시작
     func startTimer(){
@@ -43,14 +43,14 @@ class PomodoroModel: NSObject,ObservableObject {
             addNewTimer = false
             
             //저장할 데이터들
-            storeTime.totalSec = totalSec
-            storeTime.staticTotalSec = staticTotalSec
+//            storeTime.totalSec = totalSec
+//            storeTime.staticTotalSec = staticTotalSec
         }
-        if totalSec == 0 {
-            model.addData(totalSec: storeTime.totalSec, staticTotalSec: storeTime.staticTotalSec)
-        } else {
-            model.updateData(todoToUpdate: storeTime)
-        }
+//        if totalSec == 0 {
+//            model.addData(totalSec: storeTime.totalSec, staticTotalSec: storeTime.staticTotalSec)
+//        } else {
+//            model.updateData(todoToUpdate: storeTime)
+//        }
     }
     
     //MARK: 타이머 정지
@@ -59,7 +59,7 @@ class PomodoroModel: NSObject,ObservableObject {
             isStarted = false
         }
         storeTime.totalSec = totalSec
-        model.updateData(todoToUpdate: storeTime)
+//        model.updateData(todoToUpdate: storeTime)
     }
     
     //MARK: 목표시간 재설정 및 정지
@@ -72,7 +72,7 @@ class PomodoroModel: NSObject,ObservableObject {
             setMin = 0
             setSec = 0
         }
-        storeTime.staticTotalSec = staticTotalSec
+//        storeTime.staticTotalSec = staticTotalSec
         
     }
     
